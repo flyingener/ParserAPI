@@ -1,0 +1,3 @@
+F:\Project\ParserAPI\ParserAPI\bin\Debug\ParserAPI.exe.config
+F:\Project\ParserAPI\ParserAPI.prj\bin\Debug\ParserAPI.exe.config
+F:\Project\ParserAPI\ParserAPI\ParserAPI.prj\bin\Debug\ParserAPI.exe.config
