@@ -29,15 +29,23 @@ namespace ParserAPI
 
         public DateTime Week = DateTime.Now.AddDays(-7);
 
-        //List<ParserResultData> ParserResult = new List<ParserResultData>();
-
-
         public class ParserResult
         {
-            public int id { get; set; }
-            public string plate { get; set; }
+            [JsonProperty("timestamp")]
             public DateTime timestamp { get; set; }
         }
+
+
+        public class ParserResultLog
+        {
+            [JsonProperty("entries")]
+            public List<ParserResult> ParserResults { get; set; }
+            public ParserResultLog()
+            {
+                ParserResults = new List<ParserResult>();
+            }
+        }
+
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -46,16 +54,16 @@ namespace ParserAPI
 
         private void btnRequest_Click(object sender, EventArgs e)
         {
+            List<ParserResult> ParserResult = new List<ParserResult>();
+
             Offset = 0;
 
             int done = 0;
 
             //Запускаем цикл до того момента, пока не будут получены более ранние записи
-
-            while (done <= 1)
+            while (done < 1)
             {
                 //Создание web-запроса
-
                 HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create("http://xn--80aaahbralm5bfdcfjcdqpf.xn--p1ai:45555/api/v1/vehicles?offset=" + Offset + "&limit=15");
 
                 myWebRequest.Accept = "application/json";
@@ -63,15 +71,9 @@ namespace ParserAPI
                 myWebRequest.Method = "GET";
 
                 //Отправка запроса 
-
                 HttpWebResponse myWebResponse = (HttpWebResponse)myWebRequest.GetResponse();
 
-                var serializer = JsonSerializer.CreateDefault();
-
-                var listEnteringAuto = new ParserResult();
-
                 //Обработка ответа
-
                 using (StreamReader stream = new StreamReader(myWebResponse.GetResponseStream(), Encoding.UTF8))
                 {
                     using (var jsonReader = new JsonTextReader(stream))
@@ -81,45 +83,34 @@ namespace ParserAPI
 
                         List<JToken> results = jsonParser["entries"].Children().ToList();
 
-                        List<ParserResult> ParserResult = new List<ParserResult>();
-
                         foreach (JToken result in results)
                         {
                             //Десериализация ответа и передача полученных значений
-
                             ParserResult searchResult = JsonConvert.DeserializeObject<ParserResult>(result.ToString());
-
+                            
                             ParserResult.Add(searchResult);
                         }
 
-                        //Проверка даты, среди полученных данных
-
                         foreach (ParserResult result in ParserResult)
                         {
-                            //Тестирование результата и передача его в richTextBox, для анализа
-
-                            text = text + "ID: " + result.id + "; Timestamp: "
-                                 + result.timestamp + "; Number: " + result.plate;
-
-                            richTextBox1.Text = text;
-
                             //Если получаем дату, которая была раньше, чем 7 дней назад, то возвращаем done = 1
-
                             if (Week.CompareTo(result.timestamp) == 1)
                             {
                                 done++;
                             }
                         }
+
+                        richTextBox1.Text = text;
+
                     }
                 }
 
                 //Увеличиваем значение Offset, что бы пропустить записи, которые уже есть
-
                 Offset = Offset + 15;
             }
         }
 
-        private void btnChart_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

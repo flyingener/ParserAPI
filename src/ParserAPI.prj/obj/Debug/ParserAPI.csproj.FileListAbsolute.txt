@@ -1,3 +1,13 @@
 F:\Project\ParserAPI\ParserAPI\bin\Debug\ParserAPI.exe.config
 F:\Project\ParserAPI\ParserAPI.prj\bin\Debug\ParserAPI.exe.config
 F:\Project\ParserAPI\ParserAPI\ParserAPI.prj\bin\Debug\ParserAPI.exe.config
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\bin\Debug\ParserAPI.exe.config
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\bin\Debug\ParserAPI.exe
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\bin\Debug\ParserAPI.pdb
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\bin\Debug\Newtonsoft.Json.dll
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\obj\Debug\ParserAPI.csprojResolveAssemblyReference.cache
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\obj\Debug\ParserAPI.MainForm.resources
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\obj\Debug\ParserAPI.Properties.Resources.resources
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\obj\Debug\ParserAPI.csproj.GenerateResource.Cache
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\obj\Debug\ParserAPI.exe
+F:\Project\ParserAPI\ParserAPI\src\ParserAPI.prj\obj\Debug\ParserAPI.pdb
