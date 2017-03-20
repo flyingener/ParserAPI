@@ -28,68 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 1D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 5D);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnRequest = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
+            this._lblResult = new System.Windows.Forms.Label();
+            this._btnRequest = new System.Windows.Forms.Button();
+            this._btnExit = new System.Windows.Forms.Button();
+            this._dgvResult = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvResult)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.chart1);
-            this.panel1.Controls.Add(this.btnRequest);
-            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this._dgvResult);
+            this.panel1.Controls.Add(this._lblResult);
+            this.panel1.Controls.Add(this._btnRequest);
+            this.panel1.Controls.Add(this._btnExit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(307, 342);
             this.panel1.TabIndex = 0;
             // 
-            // chart1
+            // _lblResult
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(3, 3);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.Points.Add(dataPoint3);
-            series2.Points.Add(dataPoint4);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(301, 300);
-            this.chart1.TabIndex = 4;
-            this.chart1.Text = "chart1";
+            this._lblResult.AutoSize = true;
+            this._lblResult.Location = new System.Drawing.Point(9, 321);
+            this._lblResult.Name = "_lblResult";
+            this._lblResult.Size = new System.Drawing.Size(57, 13);
+            this._lblResult.TabIndex = 4;
+            this._lblResult.Text = "//results//";
             // 
-            // btnRequest
+            // _btnRequest
             // 
-            this.btnRequest.Location = new System.Drawing.Point(148, 316);
-            this.btnRequest.Name = "btnRequest";
-            this.btnRequest.Size = new System.Drawing.Size(75, 23);
-            this.btnRequest.TabIndex = 3;
-            this.btnRequest.Text = "Запрос";
-            this.btnRequest.UseVisualStyleBackColor = true;
-            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
+            this._btnRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this._btnRequest.Location = new System.Drawing.Point(148, 316);
+            this._btnRequest.Name = "_btnRequest";
+            this._btnRequest.Size = new System.Drawing.Size(75, 23);
+            this._btnRequest.TabIndex = 3;
+            this._btnRequest.Text = "Запрос";
+            this._btnRequest.UseVisualStyleBackColor = true;
+            this._btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
             // 
-            // btnExit
+            // _btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(229, 316);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "Выход";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this._btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._btnExit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this._btnExit.Location = new System.Drawing.Point(229, 316);
+            this._btnExit.Name = "_btnExit";
+            this._btnExit.Size = new System.Drawing.Size(75, 23);
+            this._btnExit.TabIndex = 1;
+            this._btnExit.Text = "Выход";
+            this._btnExit.UseVisualStyleBackColor = true;
+            this._btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // _dgvResult
+            // 
+            this._dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgvResult.Location = new System.Drawing.Point(3, 3);
+            this._dgvResult.Name = "_dgvResult";
+            this._dgvResult.Size = new System.Drawing.Size(301, 170);
+            this._dgvResult.TabIndex = 5;
+            this._dgvResult.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // MainForm
             // 
@@ -100,9 +100,9 @@
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "ParserAPI";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._dgvResult)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,9 +110,10 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.Button btnRequest;
-        private System.Windows.Forms.Button btnExit;
-    }
+        private System.Windows.Forms.Button _btnRequest;
+        private System.Windows.Forms.Button _btnExit;
+		private System.Windows.Forms.Label _lblResult;
+        private System.Windows.Forms.DataGridView _dgvResult;
+	}
 }
 
