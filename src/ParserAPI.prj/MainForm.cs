@@ -71,7 +71,7 @@ namespace ParserAPI
 
             List<ParserResult> parserResults = new List<ParserResult>();
 
-            List<DataList> Datalist = new List<DataList>();
+            List<DataList> DataLists = new List<DataList>();
 
             Offset = 0;
 
@@ -112,13 +112,13 @@ namespace ParserAPI
 
                         foreach (IGrouping<int, string> Group in query)
                         {
-                            int GroupDate = Group.Key;
+                            int groupDate = Group.Key;
 
                             foreach (string name in Group)
                             {
                                 int countValue = name.Count();
 
-                                Datalist.Add(new DataList() { Date = GroupDate, ValueCount = countValue });
+                                DataLists.Add(new DataList() { Date = groupDate, ValueCount = countValue });
                             }
                         }
 
@@ -131,7 +131,7 @@ namespace ParserAPI
                             }
                         }
 
-                        foreach (var result in Datalist)
+                        foreach (var result in DataLists)
                         {
                             var data = new List<DataList>{
                                 new DataList ( result.Date, result.ValueCount )
