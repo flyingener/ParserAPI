@@ -11,28 +11,30 @@ using Newtonsoft.Json.Linq;
 
 namespace ParserAPI
 {
-	public partial class MainForm : Form
-	{
-		public MainForm()
-		{
-			InitializeComponent();
+    public partial class MainForm : Form
+    {
+        public MainForm()
+        {
+            InitializeComponent();
 
-			_lblResult.Text = string.Empty;
-		}
+            _lblResult.Text = string.Empty;
+        }
 
-		public int Offset;
+        public int Offset;
 
-		public DateTime Week = DateTime.Now.AddDays(-7);
+        public DateTime Week = DateTime.Now.AddDays(-7);
 
-		public class ParserResult
-		{
-			[JsonProperty("timestamp")]
-			public DateTime timestamp { get; set; }
-		}
+        public class ParserResult
+        {
+            [JsonProperty("timestamp")]
+            public DateTime timestamp { get; set; }
+            [JsonProperty("id")]
+            public string id { get; set; }
+        }
 
         public class DataList
         {
-            public DataList(DateTime date, int valueCount)
+            public DataList(int date, int valueCount)
             {
                 Date = date;
                 ValueCount = valueCount;
@@ -42,18 +44,18 @@ namespace ParserAPI
             {
 
             }
-            public DateTime Date { get; set; }
+            public int Date { get; set; }
             public int ValueCount { get; set; }
         }
 
-		private void btnExit_Click(object sender, EventArgs e)
-		{
-			Close();
-		}
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
-		private async void btnRequest_Click(object sender, EventArgs e)
-		{
-			_lblResult.Text = "Loading...";
+        private async void btnRequest_Click(object sender, EventArgs e)
+        {
+            _lblResult.Text = "Loading...";
 
             _dgvResult.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -67,55 +69,67 @@ namespace ParserAPI
                 HeaderText = "Кол-во"
             });
 
-			List<ParserResult> parserResults = new List<ParserResult>();
+            List<ParserResult> parserResults = new List<ParserResult>();
 
             List<DataList> Datalist = new List<DataList>();
 
-			Offset = 0;
+            Offset = 0;
 
-			int Done = 0;
+            int Done = 0;
 
-			//Запускаем цикл до того момента, пока не будут получены более ранние записи
-			while(Done < 1)
-			{
-				//Создание web-запроса
-				var myWebRequest = (HttpWebRequest)WebRequest.Create("http://xn--80aaahbralm5bfdcfjcdqpf.xn--p1ai:45555/api/v1/vehicles?offset=" + Offset + "&limit=15");
+            //Запускаем цикл до того момента, пока не будут получены более ранние записи
+            while (Done < 1)
+            {
+                //Создание web-запроса
+                var myWebRequest = (HttpWebRequest)WebRequest.Create("http://xn--80aaahbralm5bfdcfjcdqpf.xn--p1ai:45555/api/v1/vehicles?offset=" + Offset + "&limit=15");
 
-				myWebRequest.Accept = "application/json";
+                myWebRequest.Accept = "application/json";
 
-				myWebRequest.Method = "GET";
+                myWebRequest.Method = "GET";
 
-				//Отправка запроса 
-				var myWebResponse = (HttpWebResponse)await myWebRequest.GetResponseAsync();
+                //Отправка запроса 
+                var myWebResponse = (HttpWebResponse)await myWebRequest.GetResponseAsync();
 
-				//Обработка ответа
-				using(var stream = new StreamReader(myWebResponse.GetResponseStream(), Encoding.UTF8))
-				{
-					using(var jsonReader = new JsonTextReader(stream))
-					{
-						//Подготовка к парсингу json ответа
-						var jsonParser = JObject.Parse(await stream.ReadToEndAsync());
+                //Обработка ответа
+                using (var stream = new StreamReader(myWebResponse.GetResponseStream(), Encoding.UTF8))
+                {
+                    using (var jsonReader = new JsonTextReader(stream))
+                    {
+                        //Подготовка к парсингу json ответа
+                        var jsonParser = JObject.Parse(await stream.ReadToEndAsync());
 
-						var results = jsonParser["entries"].Children().ToList();
+                        var results = jsonParser["entries"].Children().ToList();
 
-						foreach(var result in results)
-						{
-							//Десериализация ответа и передача полученных значений
-							var searchResult = await JsonConvert.DeserializeObjectAsync<ParserResult>(result.ToString());
+                        foreach (var result in results)
+                        {
+                            //Десериализация ответа и передача полученных значений
+                            var searchResult = await JsonConvert.DeserializeObjectAsync<ParserResult>(result.ToString());
 
-							parserResults.Add(searchResult);
-						}
+                            parserResults.Add(searchResult);
+                        }
 
-						foreach(var result in parserResults)
-						{
-                            Datalist.Add(new DataList() { Date = result.timestamp, ValueCount = parserResults.Count(p => p.timestamp == p.timestamp) });
+                        IEnumerable<IGrouping<int, string>> query = parserResults.GroupBy(group => group.timestamp.Day, group => group.id);
 
-							//Если получаем дату, которая была раньше, чем 7 дней назад, то возвращаем done = 1
-							if(Week.CompareTo(result.timestamp) == 1)
-							{
-								Done++;
-							}
-						}
+                        foreach (IGrouping<int, string> Group in query)
+                        {
+                            int GroupDate = Group.Key;
+
+                            foreach (string name in Group)
+                            {
+                                int countValue = name.Count();
+
+                                Datalist.Add(new DataList() { Date = GroupDate, ValueCount = countValue });
+                            }
+                        }
+
+                        foreach (var result in parserResults)
+                        {
+                            //Если получаем дату, которая была раньше, чем 7 дней назад, то возвращаем done = 1
+                            if (Week.CompareTo(result.timestamp) == 1)
+                            {
+                                Done++;
+                            }
+                        }
 
                         foreach (var result in Datalist)
                         {
@@ -125,18 +139,18 @@ namespace ParserAPI
 
                             _dgvResult.DataSource = data;
                         }
-					}
-				}
-				//Увеличиваем значение Offset, что бы пропустить записи, которые уже есть
-				Offset = Offset + 15;
-			}
+                    }
+                }
+                //Увеличиваем значение Offset, что бы пропустить записи, которые уже есть
+                Offset = Offset + 15;
+            }
 
-			_lblResult.Text = "Было обработано " + Offset.ToString() + " записей";
-		}
+            _lblResult.Text = "Было обработано " + Offset.ToString() + " записей";
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-	}
+    }
 }

@@ -52,7 +52,7 @@
             // _lblResult
             // 
             this._lblResult.AutoSize = true;
-            this._lblResult.Location = new System.Drawing.Point(9, 321);
+            this._lblResult.Location = new System.Drawing.Point(12, 321);
             this._lblResult.Name = "_lblResult";
             this._lblResult.Size = new System.Drawing.Size(57, 13);
             this._lblResult.TabIndex = 4;
@@ -85,11 +85,10 @@
             // _dgvResult
             // 
             this._dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._dgvResult.Location = new System.Drawing.Point(3, 3);
+            this._dgvResult.Location = new System.Drawing.Point(4, 4);
             this._dgvResult.Name = "_dgvResult";
-            this._dgvResult.Size = new System.Drawing.Size(301, 170);
+            this._dgvResult.Size = new System.Drawing.Size(300, 194);
             this._dgvResult.TabIndex = 5;
-            this._dgvResult.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // MainForm
             // 

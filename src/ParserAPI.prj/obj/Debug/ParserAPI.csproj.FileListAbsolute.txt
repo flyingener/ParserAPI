@@ -21,13 +21,3 @@ C:\Users\artyo\Desktop\ParserAPI-master\src\ParserAPI.prj\bin\Debug\ParserAPI.ex
 C:\Users\artyo\Desktop\ParserAPI-master\src\ParserAPI.prj\bin\Debug\ParserAPI.exe
 C:\Users\artyo\Desktop\ParserAPI-master\src\ParserAPI.prj\bin\Debug\ParserAPI.pdb
 C:\Users\artyo\Desktop\ParserAPI-master\src\ParserAPI.prj\bin\Debug\Newtonsoft.Json.dll
-F:\Download\Skype\src\ParserAPI.prj\bin\Debug\ParserAPI.exe.config
-F:\Download\Skype\src\ParserAPI.prj\obj\Debug\ParserAPI.exe
-F:\Download\Skype\src\ParserAPI.prj\obj\Debug\ParserAPI.pdb
-F:\Download\Skype\src\ParserAPI.prj\obj\Debug\ParserAPI.csprojResolveAssemblyReference.cache
-F:\Download\Skype\src\ParserAPI.prj\obj\Debug\ParserAPI.MainForm.resources
-F:\Download\Skype\src\ParserAPI.prj\obj\Debug\ParserAPI.Properties.Resources.resources
-F:\Download\Skype\src\ParserAPI.prj\obj\Debug\ParserAPI.csproj.GenerateResource.Cache
-F:\Download\Skype\src\ParserAPI.prj\bin\Debug\ParserAPI.exe
-F:\Download\Skype\src\ParserAPI.prj\bin\Debug\ParserAPI.pdb
-F:\Download\Skype\src\ParserAPI.prj\bin\Debug\Newtonsoft.Json.dll
