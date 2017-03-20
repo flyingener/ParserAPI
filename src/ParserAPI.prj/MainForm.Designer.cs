@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this._dgvResult = new System.Windows.Forms.DataGridView();
             this._lblResult = new System.Windows.Forms.Label();
             this._btnRequest = new System.Windows.Forms.Button();
             this._btnExit = new System.Windows.Forms.Button();
-            this._dgvResult = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgvResult)).BeginInit();
             this.SuspendLayout();
@@ -49,10 +49,18 @@
             this.panel1.Size = new System.Drawing.Size(307, 342);
             this.panel1.TabIndex = 0;
             // 
+            // _dgvResult
+            // 
+            this._dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgvResult.Location = new System.Drawing.Point(4, 4);
+            this._dgvResult.Name = "_dgvResult";
+            this._dgvResult.Size = new System.Drawing.Size(300, 194);
+            this._dgvResult.TabIndex = 5;
+            // 
             // _lblResult
             // 
             this._lblResult.AutoSize = true;
-            this._lblResult.Location = new System.Drawing.Point(12, 321);
+            this._lblResult.Location = new System.Drawing.Point(12, 201);
             this._lblResult.Name = "_lblResult";
             this._lblResult.Size = new System.Drawing.Size(57, 13);
             this._lblResult.TabIndex = 4;
@@ -81,14 +89,6 @@
             this._btnExit.Text = "Выход";
             this._btnExit.UseVisualStyleBackColor = true;
             this._btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // _dgvResult
-            // 
-            this._dgvResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._dgvResult.Location = new System.Drawing.Point(4, 4);
-            this._dgvResult.Name = "_dgvResult";
-            this._dgvResult.Size = new System.Drawing.Size(300, 194);
-            this._dgvResult.TabIndex = 5;
             // 
             // MainForm
             // 
