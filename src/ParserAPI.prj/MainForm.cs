@@ -23,8 +23,6 @@ namespace ParserAPI
             InitializeComponent();
         }
 
-        public string text;
-
         public int Offset;
 
         public DateTime Week = DateTime.Now.AddDays(-7);
@@ -54,14 +52,14 @@ namespace ParserAPI
 
         private void btnRequest_Click(object sender, EventArgs e)
         {
-            List<ParserResult> ParserResult = new List<ParserResult>();
+            List<ParserResult> parserResults = new List<ParserResult>();
 
             Offset = 0;
 
-            int done = 0;
+            int Done = 0;
 
             //Запускаем цикл до того момента, пока не будут получены более ранние записи
-            while (done < 1)
+            while (Done < 1)
             {
                 //Создание web-запроса
                 HttpWebRequest myWebRequest = (HttpWebRequest)WebRequest.Create("http://xn--80aaahbralm5bfdcfjcdqpf.xn--p1ai:45555/api/v1/vehicles?offset=" + Offset + "&limit=15");
@@ -88,23 +86,19 @@ namespace ParserAPI
                             //Десериализация ответа и передача полученных значений
                             ParserResult searchResult = JsonConvert.DeserializeObject<ParserResult>(result.ToString());
                             
-                            ParserResult.Add(searchResult);
+                            parserResults.Add(searchResult);
                         }
 
-                        foreach (ParserResult result in ParserResult)
+                        foreach (ParserResult result in parserResults)
                         {
                             //Если получаем дату, которая была раньше, чем 7 дней назад, то возвращаем done = 1
                             if (Week.CompareTo(result.timestamp) == 1)
                             {
-                                done++;
+                                Done++;
                             }
                         }
-
-                        richTextBox1.Text = text;
-
                     }
                 }
-
                 //Увеличиваем значение Offset, что бы пропустить записи, которые уже есть
                 Offset = Offset + 15;
             }

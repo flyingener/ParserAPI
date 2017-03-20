@@ -37,7 +37,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnRequest = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -47,11 +46,10 @@
             this.panel1.Controls.Add(this.chart1);
             this.panel1.Controls.Add(this.btnRequest);
             this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(629, 418);
+            this.panel1.Size = new System.Drawing.Size(307, 342);
             this.panel1.TabIndex = 0;
             // 
             // chart1
@@ -60,7 +58,7 @@
             this.chart1.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(320, 4);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
@@ -69,13 +67,13 @@
             series2.Points.Add(dataPoint3);
             series2.Points.Add(dataPoint4);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(297, 300);
+            this.chart1.Size = new System.Drawing.Size(301, 300);
             this.chart1.TabIndex = 4;
             this.chart1.Text = "chart1";
             // 
             // btnRequest
             // 
-            this.btnRequest.Location = new System.Drawing.Point(461, 392);
+            this.btnRequest.Location = new System.Drawing.Point(148, 316);
             this.btnRequest.Name = "btnRequest";
             this.btnRequest.Size = new System.Drawing.Size(75, 23);
             this.btnRequest.TabIndex = 3;
@@ -85,7 +83,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(542, 392);
+            this.btnExit.Location = new System.Drawing.Point(229, 316);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 1;
@@ -93,19 +91,12 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(4, 4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(310, 300);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 418);
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ClientSize = new System.Drawing.Size(307, 342);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "ParserAPI";
@@ -122,7 +113,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button btnRequest;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 
