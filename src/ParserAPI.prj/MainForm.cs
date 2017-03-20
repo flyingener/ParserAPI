@@ -114,10 +114,10 @@ namespace ParserAPI
                         {
                             int groupDate = Group.Key;
 
+                            int countValue = Group.Count();
+
                             foreach (string name in Group)
                             {
-                                int countValue = name.Count();
-
                                 DataLists.Add(new DataList() { Date = groupDate, ValueCount = countValue });
                             }
                         }
